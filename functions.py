@@ -17,3 +17,9 @@ def toEntry():
     name = entry("Enter your name: ","Error, empty field.")
 
     return name
+
+def intro(name):
+
+    print("GG Burgers")  
+
+    print("Employee: " + name )
