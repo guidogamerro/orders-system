@@ -1,4 +1,4 @@
-from functions import toEntry, entry
+from functions import confirm, toEntry, entry, intNumber, calculate, saveSale
 
 prices = {"Combo1" : 5 , "Combo2" : 6 , "Combo3" : 7 , "Dessert" : 2}
 
@@ -16,9 +16,9 @@ while exit:
 
     #operatorData["Entry"] = start
 
-    #cashRegister = 0
+    cashRegister = 0
 
-    #print("\n\n")
+    print("\n\n")
 
     while True:
 
@@ -36,11 +36,38 @@ while exit:
 
             #print("\n\n")
 
-            order = {"Client" : "" , "date":"" , "Combo1" : 0 , "Combo2" : 0 , "Combo3" : 0 , "Dessert" : 0 , "Total" : 0}
+            order = {"Client" : "" , "Date":"" , "Combo1" : 0 , "Combo2" : 0 , "Combo3" : 0 , "Dessert" : 0 , "Total" : 0}
             order["Client"] = entry("Client's name: ", "Error, empty field")
-            #order["date"] =
-            #order["Combo1"] =
-            #order["Combo2"] =
-            #order["Combo3"] =
-            ##order["Dessert"] =
-            ##order["Total"] =
+            order["Combo1"] = intNumber("Amount of Combo1", "Error, only numbers")
+            order["Combo2"] = intNumber("Amount of Combo2", "Error, only numbers")
+            order["Combo3"] = intNumber("Amount of Combo3", "Error, only numbers")
+            order["Dessert"] = intNumber("Amount of desserts", "Error, only numbers")
+
+            total = calculate(prices, order)
+            print("Total is: $", total)
+
+            payment = intNumber("Pay with", "Error, only numbers")
+
+            while total > payment:
+
+                print("It is not enough, your payment must be greater than the total")
+
+                payment = intNumber("Pay with", "Error, only numbers")
+
+            print("Change $" , payment - total)
+
+            condition = confirm()     
+
+            if condition:
+
+                cashRegister += total
+
+                #order["Date"] = time.asctime()
+
+                order["Total"] = total
+
+                saveSale(order)
+
+            else:
+
+                print("Order was cancelled")
