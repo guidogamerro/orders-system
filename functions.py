@@ -23,3 +23,13 @@ def intro(name):
     print("GG Burgers")  
 
     print("Employee: " + name )
+
+def calculate(prices, order):
+
+    total = 0
+    total += order["Combo1"] * prices["Combo1"]
+    total += order["Combo2"] * prices["Combo2"]
+    total += order["Combo3"] * prices["Combo3"]
+    total += order["Dessert"] * prices["Dessert"]
+
+    return total
