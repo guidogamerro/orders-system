@@ -5,7 +5,7 @@ prices = {"Combo1" : 5 , "Combo2" : 6 , "Combo3" : 7 , "Dessert" : 2}
 
 exitSys = True
 
-while exit:
+while exitSys:
 
     operatorData = {"Name" : "" , "Entry" : "" , "Exit" : "" , "Money" : 0}
 
@@ -100,5 +100,5 @@ while exit:
         else:
 
             print("Wrong option, try again")
-            
+
             print("\n*3")
