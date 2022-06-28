@@ -1,5 +1,4 @@
-from functions import toEntry
-
+from functions import toEntry, entry
 
 prices = {"Combo1" : 5 , "Combo2" : 6 , "Combo3" : 7 , "Dessert" : 2}
 
@@ -30,3 +29,18 @@ while exit:
         2 - Cambio de turno
         3 - Apagar sistema
         """)
+
+        option = entry("number", "Error, empty field")
+
+        if option == "1":
+
+            #print("\n\n")
+
+            order = {"Client" : "" , "date":"" , "Combo1" : 0 , "Combo2" : 0 , "Combo3" : 0 , "Dessert" : 0 , "Total" : 0}
+            order["Client"] = entry("Client's name: ", "Error, empty field")
+            #order["date"] =
+            #order["Combo1"] =
+            #order["Combo2"] =
+            #order["Combo3"] =
+            ##order["Dessert"] =
+            ##order["Total"] =

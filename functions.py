@@ -51,3 +51,23 @@ def confirm():
     else:
 
         return False
+
+def intNumber(message, error):
+
+    data = input(message)
+
+    while True:
+
+        try:
+
+            data = int(data)
+
+            break
+
+        except ValueError:
+
+            print("Error")
+
+            data = input(message)
+
+    return data
