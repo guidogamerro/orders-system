@@ -14,7 +14,7 @@ def toEntry():
 
     print("Welcome to GG Burgers")
 
-    name = entry("Enter your name: ","Error, empty field.")
+    name = entry("Enter your name: " , "Error, empty field.")
 
     return name
 
@@ -33,3 +33,21 @@ def calculate(prices, order):
     total += order["Dessert"] * prices["Dessert"]
 
     return total
+
+def confirm():
+
+    answer = entry("Do you confir the order? Y/N" , "Error, empty field")
+
+    while answer.lower() != "y" and answer.lower() != "n" and answer.lower() != "yes" and answer.lower() != "no":
+
+        print("Enter only yer or no")
+
+        answer = entry("Do you confir the order? Y/N" , "Error, empty field")
+
+    if answer == "y" or answer == "yes":
+
+        return True
+
+    else:
+
+        return False
