@@ -71,3 +71,41 @@ def intNumber(message, error):
             data = input(message)
 
     return data
+
+def saveSale(data):
+
+    row = ""
+
+    for n in data:
+
+        if n == "Total":
+
+            row += str(data[n]) + "\n"
+
+        else:
+
+            row += str(data[n]) + ","
+
+    f = open("ventas.txt","a")
+
+    f.write(row)
+
+    f.close()
+
+def saveOperator(data):
+
+    entry = "IN " + data["Entry"] + " Operator " + data["Name"] + "\n"
+
+    exit = "OUT " + data["Exit"] + " Operator "+ data["Name"] +" $ " + str(data["Money"]) + "\n"
+
+    separator = ("#" * 50) + "\n"
+
+    f = open("registro.txt","a")
+
+    f.write(entry)
+
+    f.write(exit)
+
+    f.write(separator)
+    
+    f.close()

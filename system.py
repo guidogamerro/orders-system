@@ -1,4 +1,5 @@
 from functions import confirm, toEntry, entry, intNumber, calculate, saveSale
+import time
 
 prices = {"Combo1" : 5 , "Combo2" : 6 , "Combo3" : 7 , "Dessert" : 2}
 
@@ -10,11 +11,11 @@ while exit:
 
     operator = toEntry()
 
-    #start = time.asctime()
+    start = time.asctime()
 
     operatorData["Name"] = operator
 
-    #operatorData["Entry"] = start
+    operatorData["Entry"] = start
 
     cashRegister = 0
 
@@ -30,7 +31,7 @@ while exit:
         3 - Apagar sistema
         """)
 
-        option = entry("number", "Error, empty field")
+        option = entry("Option number ", "Error, empty field")
 
         if option == "1":
 
@@ -38,21 +39,21 @@ while exit:
 
             order = {"Client" : "" , "Date":"" , "Combo1" : 0 , "Combo2" : 0 , "Combo3" : 0 , "Dessert" : 0 , "Total" : 0}
             order["Client"] = entry("Client's name: ", "Error, empty field")
-            order["Combo1"] = intNumber("Amount of Combo1", "Error, only numbers")
-            order["Combo2"] = intNumber("Amount of Combo2", "Error, only numbers")
-            order["Combo3"] = intNumber("Amount of Combo3", "Error, only numbers")
-            order["Dessert"] = intNumber("Amount of desserts", "Error, only numbers")
+            order["Combo1"] = intNumber("Amount of Combo1: ", "Error, only numbers")
+            order["Combo2"] = intNumber("Amount of Combo2: ", "Error, only numbers")
+            order["Combo3"] = intNumber("Amount of Combo3: ", "Error, only numbers")
+            order["Dessert"] = intNumber("Amount of desserts: ", "Error, only numbers")
 
             total = calculate(prices, order)
             print("Total is: $", total)
 
-            payment = intNumber("Pay with", "Error, only numbers")
+            payment = intNumber("Pay with: ", "Error, only numbers")
 
             while total > payment:
 
                 print("It is not enough, your payment must be greater than the total")
 
-                payment = intNumber("Pay with", "Error, only numbers")
+                payment = intNumber("Pay with: ", "Error, only numbers")
 
             print("Change $" , payment - total)
 
