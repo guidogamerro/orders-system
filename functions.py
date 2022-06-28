@@ -86,7 +86,7 @@ def saveSale(data):
 
             row += str(data[n]) + ","
 
-    f = open("ventas.txt","a")
+    f = open("Sales.txt","a")
 
     f.write(row)
 
@@ -100,12 +100,12 @@ def saveOperator(data):
 
     separator = ("#" * 50) + "\n"
 
-    f = open("registro.txt","a")
+    f = open("Register.txt","a")
 
     f.write(entry)
 
     f.write(exit)
 
     f.write(separator)
-    
+
     f.close()

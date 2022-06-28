@@ -1,0 +1,6 @@
+IN Tue Jun 28 11:48:15 2022 Operator GUIDO
+OUT Tue Jun 28 11:48:48 2022 Operator GUIDO $ 62
+##################################################
+IN Tue Jun 28 11:48:52 2022 Operator BRUNO
+OUT Tue Jun 28 11:49:07 2022 Operator BRUNO $ 280
+##################################################
