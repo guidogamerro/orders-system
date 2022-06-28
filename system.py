@@ -1,9 +1,9 @@
-from functions import confirm, toEntry, entry, intNumber, calculate, saveSale
+from functions import confirm, saveOperator, toEntry, entry, intNumber, calculate, saveSale
 import time
 
 prices = {"Combo1" : 5 , "Combo2" : 6 , "Combo3" : 7 , "Dessert" : 2}
 
-exit = True
+exitSys = True
 
 while exit:
 
@@ -35,7 +35,7 @@ while exit:
 
         if option == "1":
 
-            #print("\n\n")
+            print("\n\n")
 
             order = {"Client" : "" , "Date":"" , "Combo1" : 0 , "Combo2" : 0 , "Combo3" : 0 , "Dessert" : 0 , "Total" : 0}
             order["Client"] = entry("Client's name: ", "Error, empty field")
@@ -63,7 +63,7 @@ while exit:
 
                 cashRegister += total
 
-                #order["Date"] = time.asctime()
+                order["Date"] = time.asctime()
 
                 order["Total"] = total
 
@@ -72,3 +72,33 @@ while exit:
             else:
 
                 print("Order was cancelled")
+
+        elif option == "2":
+
+            operatorData["Exit"] = time.asctime()
+
+            operatorData["Money"] = cashRegister
+
+            saveOperator(operatorData)
+
+            break
+
+        elif option == "3":
+
+            operatorData["Exit"] = time.asctime()
+
+            operatorData["Money"] = cashRegister
+
+            saveOperator(operatorData)
+
+            print("Thank you, see you later")
+
+            exitSys = False
+
+            break
+
+        else:
+
+            print("Wrong option, try again")
+            
+            print("\n*3")
