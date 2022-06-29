@@ -126,7 +126,7 @@ def saveSale(data):
 
 def saveOperator(data):
 
-    entry = "IN " + data["Entry"] + " Operator " + data["Name"] + "\n"
+    '''entry = "IN " + data["Entry"] + " Operator " + data["Name"] + "\n"
 
     exit = "OUT " + data["Exit"] + " Operator "+ data["Name"] +" $ " + str(data["Money"]) + "\n"
 
@@ -140,4 +140,33 @@ def saveOperator(data):
 
     f.write(separator)
 
-    f.close()
+    f.close()'''
+
+    datasIN = (data["Name"], data["Entry"], "IN", "-")
+    datasOut = (data["Name"], data["Exit"], "OUT", data["Money"])
+
+    conn = sqlite3.connect("shop.sqlite")
+    cursor = conn.cursor()
+
+    try:
+
+        cursor.execute("INSERT INTO registration VALUES(NULL, ?, ?, ?, ?)", datasIN)
+        cursor.execute("INSERT INTO registration VALUES(NULL, ?, ?, ?, ?)", datasOut)
+
+    except sqlite3.OperationalError:
+
+        cursor.execute("""CREATE TABLE registration(
+            id INTEGER PRIMARY KEY AUTOINCREment,
+            operator TEXT,
+            date INT,
+            in/out TEXT,
+            cash register INT
+        )""")
+        cursor.execute("INSERT INTO registration VALUES(NULL, ?, ?, ?, ?)", datasIN)
+        cursor.execute("INSERT INTO registration VALUES(NULL, ?, ?, ?, ?)", datasOut)
+
+    conn.commit()
+
+    conn.close()
+
+    print("Operator salved")
