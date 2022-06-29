@@ -142,7 +142,7 @@ def saveOperator(data):
 
     f.close()'''
 
-    datasIN = (data["Name"], data["Entry"], "IN", "-")
+    datasIN = (data["Name"], data["Entry"], "IN", 0)
     datasOut = (data["Name"], data["Exit"], "OUT", data["Money"])
 
     conn = sqlite3.connect("shop.sqlite")
@@ -159,8 +159,8 @@ def saveOperator(data):
             id INTEGER PRIMARY KEY AUTOINCREment,
             operator TEXT,
             date INT,
-            in/out TEXT,
-            cash register INT
+            action TEXT,
+            cashregister INT
         )""")
         cursor.execute("INSERT INTO registration VALUES(NULL, ?, ?, ?, ?)", datasIN)
         cursor.execute("INSERT INTO registration VALUES(NULL, ?, ?, ?, ?)", datasOut)

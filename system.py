@@ -1,11 +1,24 @@
 from functions import confirm, saveOperator, toEntry, entry, intNumber, calculate, saveSale
 import time
+import os
+
+if (os.name == "nt"):
+
+    erase = "cls"
+
+else:
+
+    erase = "clear"
 
 prices = {"Combo1" : 5 , "Combo2" : 6 , "Combo3" : 7 , "Dessert" : 2}
 
 exitSys = True
 
+os.system(erase)
+
 while exitSys:
+
+    os.system(erase)
 
     operatorData = {"Name" : "" , "Entry" : "" , "Exit" : "" , "Money" : 0}
 
@@ -18,6 +31,8 @@ while exitSys:
     operatorData["Entry"] = start
 
     cashRegister = 0
+
+    os.system(erase)
 
     print("\n\n")
 
@@ -35,7 +50,7 @@ while exitSys:
 
         if option == "1":
 
-            print("\n\n")
+            print("\n")
 
             order = {"Client" : "" , "Date":"" , "Combo1" : 0 , "Combo2" : 0 , "Combo3" : 0 , "Dessert" : 0 , "Total" : 0}
             order["Client"] = entry("Client's name: ", "Error, empty field")
@@ -102,3 +117,5 @@ while exitSys:
             print("Wrong option, try again")
 
             print("\n*2")
+        
+        os.system(erase)
