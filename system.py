@@ -101,4 +101,4 @@ while exitSys:
 
             print("Wrong option, try again")
 
-            print("\n*3")
+            print("\n*2")

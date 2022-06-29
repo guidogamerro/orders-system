@@ -1,3 +1,5 @@
+import sqlite3
+
 def entry(message,error):
 
     data = input(message)
@@ -74,7 +76,7 @@ def intNumber(message, error):
 
 def saveSale(data):
 
-    row = ""
+    '''row = ""
 
     for n in data:
 
@@ -90,7 +92,37 @@ def saveSale(data):
 
     f.write(row)
 
-    f.close()
+    f.close()'''
+
+    datas = tuple(data.values())
+
+    conn = sqlite3.connect("shop.sqlite")
+
+    cursor = conn.cursor()
+
+    try:
+
+        cursor.execute("INSERT INTO sales VALUES (null, ?, ?, ?, ?, ?, ?, ?)", datas)
+
+    except sqlite3.OperationalError:
+
+        cursor.execute("""CREATE TABLE sales (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            client TEXT,
+            date TEXT,
+            combo1 INT,
+            combo2 INT,
+            combo3 INT,
+            desserts INT,
+            total INT
+        )""")
+        cursor.execute("INSERT INTO sales VALUES (null, ?, ?, ?, ?, ?, ?, ?)", datas)
+    
+    conn.commit()
+
+    conn.close()
+
+    print("Contact salved")
 
 def saveOperator(data):
 
