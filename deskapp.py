@@ -1,6 +1,9 @@
+import sys
 import tkinter as tk
 from typing import Text
 from tkinter import messagebox
+import time
+from functions import saveOperator
 
 #FUNCTIONS
 
@@ -14,13 +17,25 @@ def erase2():
 
 def orderCancel():
 
-    answer = messagebox.askyesno(title = "Question", message = "Do you wan to cancel the order?")
+    answer = messagebox.askyesno(title = "Question", message = "Do you want to cancel the order?")
 
     if answer:
 
         erase2()
 
+def exit():
+
+    answer = messagebox.askyesno(title = "Question", message = "Do you wan to exit?")
+
+    if answer:
+
+        operatorData["Exit"] = time.asctime()
+        saveOperator(operatorData)
+        sys.exit()
+
 ##DESK APP
+
+operatorData = {"Name" : "" , "Entry" : "" , "Exit" : "" , "Money" : 0}
 
 window = tk.Tk()
 
@@ -79,7 +94,7 @@ order22.place(x = 50, y = 370, height = 30, width = 80)
 cancel22 = tk.Button(text = "Cancel", command = orderCancel)
 cancel22.place(x = 170, y = 370, height = 30, width = 80)
 
-exit22 = tk.Button(text = "Exit")
+exit22 = tk.Button(text = "Exit", command = exit)
 exit22.place(x = 290, y = 370, height = 30, width = 80)
 
 window.mainloop()
