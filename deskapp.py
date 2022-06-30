@@ -3,7 +3,7 @@ import tkinter as tk
 from typing import Text
 from tkinter import messagebox
 import time
-from functions import saveOperator
+from functions import saveOperator, saveSale
 
 #FUNCTIONS
 
@@ -33,9 +33,74 @@ def exit():
         saveOperator(operatorData)
         sys.exit()
 
+def order():
+
+    amount1 = combo122.get()
+    #validar
+    amount2 = combo222.get()
+    #validar
+    amount3 = combo322.get()
+    #validar
+    amountD = dessert22.get()
+    #validar
+
+    if amount1 >= 0 and amount2 >= 0 and amount3 >= 0 and amountD >= 0:
+
+        client = client22.get()
+        operator = operator22.get()
+
+        if client and operator:
+
+            answer = messagebox.askyesno(title = "Question", message = "Confirm order?")
+
+            if answer:
+
+                total = amount1 * prices["Combo1"] + amount2 * prices["Combo2"] + amount3 * prices["Combo3"] + amountD * prices["Dessert"]
+                date = time.asctime()
+                order = [client, date, amount1, amount2, amount3, amountD, total]
+                messagebox.showinfo(title = "To pay", message = "$" + str(total))
+                saveSale(order)
+                messagebox.showinfo(title = "Information", message = "Successful order")
+
+                if operatorData["Name"] != operator and operatorData["Exit"] == "":
+
+                    operatorData["Name"] = operator
+                    operatorData["Exit"] = "No date"
+                    operatorData["Money"] += total
+
+                elif operatorData["Name"] == operator:
+
+                    operatorData["Money"] += total
+
+                else:
+
+                    operatorData["Exit"] = date
+                    saveOperator(operatorData)
+                    operatorData["Name"] = operator
+                    operatorData["Entry"] = date
+                    operatorData["Money"] = 0
+                    operatorData["Money"] += total
+
+                erase2()
+
+            else:
+
+                messagebox.showinfo(title = "Information", message = "Order is paused")
+            
+        else:
+
+            messagebox.showinfo(title = "Wanrnig", message = "Error, enter correct data")
+        
+    else:
+
+        messagebox.showinfo(title = "Wanrnig", message = "Error, enter correct data")
+
+
+
 ##DESK APP
 
 operatorData = {"Name" : "" , "Entry" : "" , "Exit" : "" , "Money" : 0}
+prices = {"Combo1" : 5 , "Combo2" : 6 , "Combo3" : 7 , "Dessert" : 2}
 
 window = tk.Tk()
 
