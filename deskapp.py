@@ -1,5 +1,26 @@
 import tkinter as tk
 from typing import Text
+from tkinter import messagebox
+
+#FUNCTIONS
+
+def erase2():
+
+    combo122.delete(0, tk.END)
+    combo222.delete(0, tk.END)
+    combo322.delete(0, tk.END)
+    dessert22.delete(0, tk.END)
+    client22.delete(0, tk.END)
+
+def orderCancel():
+
+    answer = messagebox.askyesno(title = "Question", message = "Do you wan to cancel the order?")
+
+    if answer:
+
+        erase2()
+
+##DESK APP
 
 window = tk.Tk()
 
@@ -49,5 +70,16 @@ dessert22.place(x = 150, y = 270)
 
 client22 = tk.Entry()
 client22.place(x = 150, y = 320)
+
+#BUTTONS
+
+order22 = tk.Button(text = "Order")
+order22.place(x = 50, y = 370, height = 30, width = 80)
+
+cancel22 = tk.Button(text = "Cancel", command = orderCancel)
+cancel22.place(x = 170, y = 370, height = 30, width = 80)
+
+exit22 = tk.Button(text = "Exit")
+exit22.place(x = 290, y = 370, height = 30, width = 80)
 
 window.mainloop()
