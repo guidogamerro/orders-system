@@ -30,6 +30,24 @@ dessert2.place(x = 60, y = 270)
 client2 = tk.Label(text = "Client")
 client2.place(x = 60, y = 320)
 
+#BOXES
 
+operator22 = tk.Entry()
+operator22.place(x = 150, y = 70)
+
+combo122 = tk.Entry()
+combo122.place(x = 150, y = 120)
+
+combo222 = tk.Entry()
+combo222.place(x = 150, y = 170)
+
+combo322 = tk.Entry()
+combo322.place(x = 150, y = 220)
+
+dessert22 = tk.Entry()
+dessert22.place(x = 150, y = 270)
+
+client22 = tk.Entry()
+client22.place(x = 150, y = 320)
 
 window.mainloop()
