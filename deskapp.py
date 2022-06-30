@@ -35,13 +35,13 @@ def exit():
 
 def order():
 
-    amount1 = combo122.get()
+    amount1 = int(combo122.get())
     #validar
-    amount2 = combo222.get()
+    amount2 = int(combo222.get())
     #validar
-    amount3 = combo322.get()
+    amount3 = int(combo322.get())
     #validar
-    amountD = dessert22.get()
+    amountD = int(dessert22.get())
     #validar
 
     if amount1 >= 0 and amount2 >= 0 and amount3 >= 0 and amountD >= 0:
@@ -57,7 +57,16 @@ def order():
 
                 total = amount1 * prices["Combo1"] + amount2 * prices["Combo2"] + amount3 * prices["Combo3"] + amountD * prices["Dessert"]
                 date = time.asctime()
-                order = [client, date, amount1, amount2, amount3, amountD, total]
+                #trying
+                order = {"Client" : "" , "Date":"" , "Combo1" : 0 , "Combo2" : 0 , "Combo3" : 0 , "Dessert" : 0 , "Total" : 0}
+                order["Client"] = client
+                order["Date"] = date
+                order["Combo1"] = amount1
+                order["Combo2"] = amount2
+                order["Combo3"] = amount3
+                order["Dessert"] = amountD
+                order["Total"] = total
+                #order = [client, date, amount1, amount2, amount3, amountD, total]
                 messagebox.showinfo(title = "To pay", message = "$" + str(total))
                 saveSale(order)
                 messagebox.showinfo(title = "Information", message = "Successful order")
@@ -153,7 +162,7 @@ client22.place(x = 150, y = 320)
 
 #BUTTONS
 
-order22 = tk.Button(text = "Order")
+order22 = tk.Button(text = "Order", command = order)
 order22.place(x = 50, y = 370, height = 30, width = 80)
 
 cancel22 = tk.Button(text = "Cancel", command = orderCancel)
